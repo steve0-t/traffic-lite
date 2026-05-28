@@ -81,7 +81,7 @@ struct rstr {
     /**
     * Trim leading and trailing whitespace.
     *
-    * WARNING: modiifes data
+    * WARNING: modifies data
     */
     void trim() {
         if (empty()) return;
