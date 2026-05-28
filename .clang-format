@@ -1,6 +1,5 @@
 BasedOnStyle: GNU
 AccessModifierOffset: -2
-AlignAfterOpenBracket: Align
 AlignConsecutiveMacros: true
 AlignConsecutiveAssignments: true
 AlignEscapedNewlines: Right
@@ -19,7 +18,7 @@ AlwaysBreakAfterDefinitionReturnType: None
 AlwaysBreakAfterReturnType: None
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: Yes
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Allman
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializers: AfterColon
 ColumnLimit: 80
@@ -55,8 +54,8 @@ UseTab: Never
 
 AllowShortEnumsOnASingleLine: true
 
-BraceWrapping:
-  AfterEnum: false
+# BraceWrapping:
+#   AfterEnum: false
 
 AlignConsecutiveDeclarations: AcrossEmptyLines
 
