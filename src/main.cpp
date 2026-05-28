@@ -212,7 +212,7 @@ int8_t get_user_input(rstr& buffer)
 
 Command get_cmd(const str_view& view)
 {
-    if (view.data != nullptr || view.len != 0)
+    if (view.data != nullptr && view.len != 0)
     {
         for (uint8_t i = 0; i < CCOUNT; i++)
         {
@@ -223,14 +223,13 @@ Command get_cmd(const str_view& view)
     return CCOUNT;
 }
 
-State get_state(const str_view& ptr)
+State get_state(const str_view& view)
 {
-    if (ptr.data != nullptr || ptr.len != 0)
+    if (view.data != nullptr && view.len != 0)
     {
-        // print_view(ptr);
         for (int8_t i = 0; i < SCOUNT; i++)
         {
-            if (strncmp(ptr.data, states[i], ptr.len) == 0) return (State)i;
+            if (strncmp(view.data, states[i], view.len) == 0) return (State)i;
         }
     }
     return SCOUNT;
