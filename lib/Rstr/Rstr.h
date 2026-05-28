@@ -9,7 +9,8 @@
 
 typedef uint16_t LEN_DATA_TYPE;
 
-struct rstr {
+struct rstr
+{
     char*         data;
     LEN_DATA_TYPE len;
 
@@ -18,7 +19,8 @@ struct rstr {
     /**
     * Returns data pointer at position @pos
     */
-    char* str_view(LEN_DATA_TYPE pos) const {
+    char* str_view(LEN_DATA_TYPE pos) const
+    {
         if (pos < len && !empty() && pos >= 0) return data + pos;
         return nullptr;
     }
@@ -26,7 +28,8 @@ struct rstr {
     /**
     * Sets data to null
     */
-    void remove_data() {
+    void remove_data()
+    {
         len  = 0;
         data = nullptr;
     }
@@ -34,9 +37,10 @@ struct rstr {
     /**
     * Zeroes out data and len
     */
-    void clear_str() {
+    void clear_str()
+    {
         if (data == nullptr) return;
-        for (LEN_DATA_TYPE i = 0; i < len; i++) data[ i ] = 0;
+        for (LEN_DATA_TYPE i = 0; i < len; i++) data[i] = 0;
         len = 0;
     }
 
@@ -46,8 +50,9 @@ struct rstr {
     /**
     * Returns character at position i of data.
     */
-    char at_pos(LEN_DATA_TYPE i) const {
-        return (!empty() && i >= 0 && i < len) ? data[ i ] : 0;
+    char at_pos(LEN_DATA_TYPE i) const
+    {
+        return (!empty() && i >= 0 && i < len) ? data[i] : 0;
     }
 
     /**
@@ -55,10 +60,13 @@ struct rstr {
 
     * Takes whitespace into consideration.
     */
-    char front() const {
-        if (!empty()) {
-            for (LEN_DATA_TYPE i = 0; i < len; i++) {
-                if (data[ i ] != ' ') return data[ i ];
+    char front() const
+    {
+        if (!empty())
+        {
+            for (LEN_DATA_TYPE i = 0; i < len; i++)
+            {
+                if (data[i] != ' ') return data[i];
             }
         }
         return 0;
@@ -69,10 +77,13 @@ struct rstr {
 
     * Takes whitespace into consideration.
     */
-    char back() const {
-        if (!empty()) {
-            for (LEN_DATA_TYPE i = len - 1; i >= 0; i--) {
-                if (data[ i ] != ' ') return data[ i ];
+    char back() const
+    {
+        if (!empty())
+        {
+            for (LEN_DATA_TYPE i = len - 1; i >= 0; i--)
+            {
+                if (data[i] != ' ') return data[i];
             }
         }
         return 0;
@@ -83,14 +94,15 @@ struct rstr {
     *
     * WARNING: modifies data
     */
-    void trim() {
+    void trim()
+    {
         if (empty()) return;
 
         uint16_t start = 0;
-        while (start < len && data[ start ] == ' ') start++;
+        while (start < len && data[start] == ' ') start++;
 
         uint16_t end = len;
-        while (end > start && data[ end - 1 ] == ' ') end--;
+        while (end > start && data[end - 1] == ' ') end--;
 
         data = data + start;
         len  = end - start;

@@ -30,14 +30,16 @@
 #define MAX_ATTR_NAME_LEN 32
 #define TAG_NAME_MAX_LEN  16
 
-#define DEFAULT_RET {nullptr, 0}
+#define DEFAULT_RET { nullptr, 0 }
 
-typedef struct {
+typedef struct
+{
     const char* data;
     uint16_t    len;
 } str_view;
 
-class XMLParser {
+class XMLParser
+{
   public:
     XMLParser();
     XMLParser(const char** accepted_commands, const char** accepted_states);

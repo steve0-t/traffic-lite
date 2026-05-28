@@ -19,14 +19,10 @@
 
 #ifdef ARDUINO
 #define custom_println(str)                                                    \
-    do {                                                                       \
-        Serial.println((str));                                                 \
-    } while (0)
+    do { Serial.println((str)); } while (0)
 #else
 #define custom_println(str)                                                    \
-    do {                                                                       \
-        std::cout << (str) << ENDL;                                            \
-    } while (0)
+    do { std::cout << (str) << ENDL; } while (0)
 #endif
 
 #define log(msg) custom_println((msg))
@@ -35,16 +31,18 @@
 #define ENDL                 '\n'
 #define INPUT_MAX_LEN        256
 
-enum Command {
+enum Command
+{
     SET = 0,
     GET,
     PING,
     CCOUNT
 };
 
-static const char* commands[CCOUNT] = {"set", "get", "ping"};
+static const char* commands[CCOUNT] = { "set", "get", "ping" };
 
-enum State {
+enum State
+{
     STOP = 0,
     READY,
     GO,
@@ -53,15 +51,16 @@ enum State {
     SCOUNT
 };
 
-static const char* states[SCOUNT] = {"STOP", "READY", "GO", "CAUTION", "OFF"};
+static const char* states[SCOUNT] = { "STOP", "READY", "GO", "CAUTION", "OFF" };
 
-enum Retval {
+enum Retval
+{
     BAD_FORMAT  = 0,
     UNKNOWN_CMD = 1,
     BAD_STATE   = 2
 };
 
-static const char* responses[3] = {"BAD_FORMAT", "UNKNOWN_CMD", "BAD_STATE"};
+static const char* responses[3] = { "BAD_FORMAT", "UNKNOWN_CMD", "BAD_STATE" };
 
 void               sem_off();
 void               stop_sem();
